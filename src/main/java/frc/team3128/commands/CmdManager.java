@@ -8,11 +8,11 @@ import edu.wpi.first.wpilibj2.command.StartEndCommand;
 import edu.wpi.first.wpilibj2.command.WaitCommand;
 import frc.team3128.RobotContainer;
 import frc.team3128.common.hardware.input.NAR_XboxController;
-import frc.team3128.subsystems.Manipulator;
+import frc.team3128.subsystems.ManipCRX;
 
 public class CmdManager {
     private static NAR_XboxController controller = RobotContainer.controller;
-    private static Manipulator manipulator = Manipulator.getInstance();
+    private static ManipCRX manipulator = ManipCRX.getInstance();
 
     private CmdManager() {}
 

@@ -28,7 +28,7 @@ import frc.team3128.common.hardware.input.NAR_XboxController;
 import frc.team3128.common.narwhaldashboard.NarwhalDashboard;
 import frc.team3128.common.utility.Log;
 import frc.team3128.subsystems.Led;
-import frc.team3128.subsystems.Manipulator;
+import frc.team3128.subsystems.ManipCRX;
 import frc.team3128.common.utility.NAR_Shuffleboard;
 import frc.team3128.subsystems.Swerve;
 import frc.team3128.subsystems.Vision;
@@ -46,7 +46,7 @@ public class RobotContainer {
     private Swerve swerve;
     private Vision vision;
     private Led led;
-    private Manipulator manip;
+    private ManipCRX manip;
 
     private NAR_Joystick leftStick;
     private NAR_Joystick rightStick;
@@ -69,7 +69,7 @@ public class RobotContainer {
         swerve = Swerve.getInstance();
         vision = Vision.getInstance();
         led = Led.getInstance();
-        manip = Manipulator.getInstance();
+        manip = ManipCRX.getInstance();
 
         //TODO: Enable all PIDSubsystems so that useOutput runs here
         // pivot.enable();
@@ -154,7 +154,7 @@ public class RobotContainer {
 
         swerve.initShuffleboard();
         vision.initShuffleboard();
-        Manipulator.getInstance().initShuffleboard();
+        ManipCRX.getInstance().initShuffleboard();
 
         NarwhalDashboard.startServer();
         

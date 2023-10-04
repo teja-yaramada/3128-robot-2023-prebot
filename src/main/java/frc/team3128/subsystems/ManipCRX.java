@@ -4,27 +4,27 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.team3128.common.hardware.motorcontroller.NAR_TalonSRX;
 import frc.team3128.common.utility.NAR_Shuffleboard;
 
-import static frc.team3128.Constants.ManipulatorConstants.*;
+import static frc.team3128.Constants.CRXConstants.*;
 
 import com.ctre.phoenix.motorcontrol.InvertType;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
 
-public class Manipulator extends SubsystemBase {
+public class ManipCRX extends SubsystemBase {
     private NAR_TalonSRX m_roller;
 
-    private static Manipulator instance;
+    private static ManipCRX instance;
 
     private boolean outtaking = false;
 
     private boolean CONE = false;
 
-    private Manipulator() {
+    private ManipCRX() {
         configMotor();
     }
 
-    public static synchronized Manipulator getInstance() {
+    public static synchronized ManipCRX getInstance() {
         if (instance == null) {
-            instance = new Manipulator();
+            instance = new ManipCRX();
         }
         return instance;
     }

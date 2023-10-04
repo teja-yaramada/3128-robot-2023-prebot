@@ -504,7 +504,7 @@ public class Constants {
         
     }
 
-    public static class ManipulatorConstants{
+    public static class CRXConstants{
         public static final int ROLLER_MOTOR_ID = 52;
         public static final double CONE_ROLLER_POWER = -0.2;
         public static final double CUBE_ROLLER_POWER = -0.3;
