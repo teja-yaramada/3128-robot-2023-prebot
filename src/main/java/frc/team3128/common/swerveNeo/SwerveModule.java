@@ -62,10 +62,11 @@ public class SwerveModule {
      * Initializes the angle motor
      */
     private void configAngleMotor(){
-        angleMotor.setSmartCurrentLimit(currentLimit);
+        angleMotor.setSmartCurrentLimit(angleLimit);
         angleMotor.setInverted(angleMotorInvert);
         angleMotor.setIdleMode(IdleMode.kCoast);
-        //angleMotor.enableContinuousInput(-180, 180, degreesToRotations(1, angleGearRatio));
+        angleMotor.enableContinuousInput(-180, 180, degreesToRotations(1, angleGearRatio));
+        angleMotor.setDefaultStatusFrames();
         resetToAbsolute();
     }
 
@@ -73,10 +74,11 @@ public class SwerveModule {
      * Intializes the drive motor
      */
     private void configDriveMotor(){        
-        driveMotor.setSmartCurrentLimit(currentLimit);
+        driveMotor.setSmartCurrentLimit(driveLimit);
         driveMotor.setInverted(driveMotorInvert);
         driveMotor.setIdleMode(IdleMode.kCoast); 
         driveMotor.setSelectedSensorPosition(0);
+        driveMotor.setDefaultStatusFrames();
     }
 
     /**
@@ -156,7 +158,7 @@ public class SwerveModule {
      * @return A swerve module position
      */
     public SwerveModulePosition getPosition() {
-        double position = falconToMeters(driveMotor.getSelectedSensorPosition(), wheelCircumference, driveGearRatio);
+        double position = rotationsToMeters(driveMotor.getSelectedSensorPosition(), wheelCircumference, driveGearRatio);
         Rotation2d angle = getAngle();
         return new SwerveModulePosition(position, angle);
     }
@@ -167,6 +169,10 @@ public class SwerveModule {
     public void stop() {
         driveMotor.set(0);
         angleMotor.set(0);
+    }
+
+    public void setBrakeMode(boolean isBrake) {
+        driveMotor.setIdleMode(isBrake ? IdleMode.kBrake : IdleMode.kCoast);
     }
 
     /**
